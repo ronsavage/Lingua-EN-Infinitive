@@ -1,5 +1,9 @@
 Revision history for Perl extension Lingua-EN-Infinitive.
 
+1.10  Fri Nov 13 13:20:00 2009
+	- Run dos2unix
+	- Rename Changes.txt to CHANGES
+
 1.09  Thu Oct 27 19:40:00 2005
 	- Regenerate META.yml with Module::Build V 0.2611 to correct a faulty
 		META.yml output by V 0.24 which falsely said 'provides: {}',
