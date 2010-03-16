@@ -10,9 +10,14 @@ configure_requires:
 dynamic_config: 0
 generated_by: 'Module::Build version 0.3603'
 license: artistic
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
 name: Lingua-EN-Infinitive
 provides:
   Lingua::EN::Infinitive:
     file: lib/Lingua/EN/Infinitive.pm
-    version: 1.09
-version: 1.09
+    version: 1.11
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
+version: 1.11
