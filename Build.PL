@@ -24,12 +24,12 @@ $class -> new
  dist_author		=> 'Ron Savage <ron@savage.net.au>',
  build_requires	=>
  {
-	 Test::More	=> 0,
-	 Test::Pod	=> 0,
+	 Test::More => 0,
+	 Test::Pod  => 0,
  },
  configure_requires =>
  {
- 	 Module::Build => 0.3800,
+	 Module::Build => 0.3800,
  },
  requires		=>
  {
