@@ -1223,7 +1223,7 @@ __END__
 
 =head1 NAME
 
-C<Lingua::EN::Infinitive> - Determine the infinitive form of a conjugated word
+Lingua::EN::Infinitive - Determine the infinitive form of a conjugated word
 
 =head1 SYNOPSIS
 
