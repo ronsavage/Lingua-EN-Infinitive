@@ -19,10 +19,11 @@ EOF
 
 $class -> new
 (
- module_name		=> 'Lingua::EN::Infinitive',
- license			=> 'artistic',
- dist_author		=> 'Ron Savage <ron@savage.net.au>',
- build_requires	=>
+ module_name    => 'Lingua::EN::Infinitive',
+ license        => 'artistic',
+ dist_abstract  => 'Determine the infinitive form of a conjugated word',
+ dist_author    => 'Ron Savage <ron@savage.net.au>',
+ build_requires =>
  {
 	 Test::More => 0,
 	 Test::Pod  => 0,
