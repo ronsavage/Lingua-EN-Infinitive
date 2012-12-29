@@ -20,7 +20,7 @@ EOF
 $class -> new
 (
  module_name    => 'Lingua::EN::Infinitive',
- license        => 'perl_5',
+ license        => 'artistic_2',
  dist_abstract  => 'Determine the infinitive form of a conjugated word',
  dist_author    => 'Ron Savage <ron@savage.net.au>',
  build_requires =>
