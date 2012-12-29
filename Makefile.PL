@@ -20,6 +20,7 @@ WriteMakefile
 	},
 	DISTNAME		=> 'Lingua-EN-Infinitive',
 	NAME			=> 'Lingua::EN::Infinitive',
+	LICENSE   => 'perl_5',
 	PL_FILES		=> {},
 	PREREQ_PM		=>
 	{
