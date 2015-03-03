@@ -1,4 +1,6 @@
 use ExtUtils::MakeMaker;
+
+# ----------------
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
@@ -8,7 +10,7 @@ WriteMakefile
 	(
 		'AUTHOR' => 'Ron Savage (ron@savage.net.au)',
 		'ABSTRACT' => 'Determine the infinitive form of a conjugated word',
-    ) : (),
+		) : (),
 	clean			=>
 	{
 		FILES		=> 'blib/* Makefile MANIFEST Lingua-EN-Infinitive-*'
@@ -24,8 +26,8 @@ WriteMakefile
 	PL_FILES		=> {},
 	PREREQ_PM		=>
 	{
-		Test::More	=> 0,
-#		Test::Pod	=> 1.45, # Make it optional. See t/pod.t
+		'Test::More' => 1.001014,
+		'Test::Pod' => 1.48,
 	},
-	VERSION_FROM	=> 'lib/Lingua/EN/Infinitive.pm'
+	VERSION_FROM => 'lib/Lingua/EN/Infinitive.pm',
 );
