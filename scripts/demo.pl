@@ -1,28 +1,26 @@
-#!/usr/gnu/bin/perl -w
-#
-# Name:
-#	test.pl.
+#!/usr/bin/env perl
 
 use strict;
+use warnings;
 
 use Lingua::EN::Infinitive;
 
 # --------------------------------------------------------------------
 
-my($spell) = Lingua::EN::Infinitive -> new();
-
 my($debug) = shift || 0;
 
-my($expectedRule, $word, $expectedStem);
-
-my($prefix1, $prefix2, $suffix, $rule);
+my($expectedRule, $expectedStem);
+my($prefix1, $prefix2);
+my($rule);
+my($sample, $suffix);
+my($word);
 
 my($head1) =
 "<------Rule------>                                                <----------------Results--------------->";
 my($head2) =
 "Expect        Got           Word               Expect             Got                    Suffix        Ok?";
 my($head3) = '-' x length($head2);
-
+my($spell) = Lingua::EN::Infinitive -> new;
 my($count) = 0;
 
 while (<DATA>)
@@ -39,23 +37,27 @@ while (<DATA>)
 	}
 
 	chomp;
-	($expectedRule, $word, $expectedStem)	= split;
+
+	$sample									= $_;
+	$sample									=~ s/\t+/\t/g;
+	($expectedRule, $word, $expectedStem)	= split(/\t/, $sample);
 	($prefix1, $prefix2, $suffix, $rule)	= $spell -> stem($word);
 
 	# Or:
 	#	$spell -> stem($word);
-	#	$prefix1	= $spell -> {'word1'}";
-	#	$prefix2	= $spell -> {'word2'};
-	#	$suffix		= $spell -> {'suffix'};
-	#	$rule		= $spell -> {'rule'};
+	#	$prefix1	= $spell -> word1;
+	#	$prefix2	= $spell -> word2;
+	#	$suffix		= $spell -> suffix;
+	#	$rule		= $spell -> rule;
 
 	# Print some by accessing the data in the alternate manner.
+
 	if ( ($debug) && ($rule eq '1') )
 	{
-		print "prefix1: $spell->{'word1'}\n";
-		print "prefix2: $spell->{'word2'}\n";
-		print "suffix:  $spell->{'suffix'}\n";
-		print "rule:    $spell->{'rule'}\n";
+		print 'prefix1: ', $spell->word1, "\n";
+		print 'prefix2: ', $spell->word2, "\n";
+		print 'suffix:  ', $spell->suffix, "\n";
+		print 'rule:    ', $spell->rule, "\n";
 	}
 
 	my($result, $stem) = ('ok', "$prefix1/$prefix2");

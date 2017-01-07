@@ -1,42 +1,42 @@
 Revision history for Perl extension Lingua-EN-Infinitive.
 
-1.12  Wed Feb 18 16:32:00 2015
+1.12  2015-02-18T16:32:00
 	- Rename CHANGES to Changes as perl CPAN::Spec::Changes.
 	- Replace /usr/bin/perl with /usr/bin/env perl.
 	- Replace common::sense with use strict and use warnings, to get uninit var warnings.
 
-1.11  Wed Feb 10 14:02:12 2010
+1.11  2010-02-10T14:02:12
 	- MANIFEST.SKIP updated to exclude MYMETA.yml. Add MYMETA.yml.
 
-1.10  Fri Nov 13 13:20:00 2009
+1.10  2009-11-13T13:20:00
 	- Run dos2unix
 	- Rename Changes.txt to CHANGES
 
-1.09  Thu Oct 27 19:40:00 2005
+1.09  2005-10-27T19:40:00
 	- Regenerate META.yml with Module::Build V 0.2611 to correct a faulty
 		META.yml output by V 0.24 which falsely said 'provides: {}',
 		which in turn stopped the PAUSE indexer from finding the module file,
 		which in turn meant this module might be omitted from the master index:
 		ftp://pause.perl.org/pub/PAUSE/modules/01modules.index.html
 
-1.08  Tue Jul 20 20:43:00 2004
+1.08  2004-07-20T20:43:00
 	- Change Makefile.PL to coexist with Module::Build
 	- Add t/pod.t to test all PODs
 
-1.07  Sun Mar 23 11:29:00 2003
+1.07  2003-03-23T11:29:00
 	- No source code changes in this version
 	- Patch to stop shipping blib/ directory in Unix distros, because the
 		PAUSE indexer takes this directory to indicate a binary distro,
 		which means it does not index the module, and this in turn means
 		the module is not listed in the CPAN daily update list, etc.
 
-1.06  Tue May 28 18:45:00 2002
+1.06  2002-05-28T18:45:00
 	- Add special code to Infinitive.pm when the suffix is 'ed'.
 		Check for a monosyllable ending in a doubled-consonant.
 		This code is identical to the special code for rule 15
 	- Add some more irregular verbs to the list and test for them
 
-1.05  Sun May 12 13:12:11 2002
+1.05  2002-05-12T13:12:11
 	- Clean up licence and email stuff in all modules, scripts and other docs.
 		Upgrading is not necessary
 
