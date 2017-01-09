@@ -38,6 +38,30 @@ while (<DATA>)
 	ok($result eq 'ok', $sample);
 }
 
+my(%expected) =
+(
+	Turkish		=> 'Turkey',
+	amateurish	=> 'amateur',
+	cuttlefish	=> '',
+	demolish	=> '',
+	radish		=> '',
+	swish		=> '',
+	standoffish	=> 'standoffish',
+	vixenish	=> 'vixen',
+	whitish		=> 'white',
+);
+
+my($adjective);
+my($noun);
+
+for $adjective (qw/Turkish amateurish cuttlefish demolish radish swish vixenish whitish/)
+{
+	$noun = $spell -> adjective2noun($adjective);
+
+	ok($noun eq $expected{$adjective}, "$adjective => $noun");
+}
+
+
 done_testing;
 
 __DATA__

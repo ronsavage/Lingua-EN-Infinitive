@@ -74,6 +74,31 @@ while (<DATA>)
 	}
 
 	print $word, '.' x (20 - length($word) ), "$result\n" if (! $debug);
+
+}
+
+# Now, adjective to noun conversion.
+
+my(%expected) =
+(
+	Turkish		=> 'Turkey',
+	amateurish	=> 'amateur',
+	cuttlefish	=> '',
+	demolish	=> '',
+	radish		=> '',
+	swish		=> '',
+	standoffish	=> 'standoffish',
+	vixenish	=> 'vixen',
+	whitish		=> 'white',
+);
+
+my($noun);
+
+for (qw/Turkish amateurish cuttlefish demolish radish swish vixenish whitish/)
+{
+	$noun = $spell -> adjective2noun($_);
+
+	print "$_ => ", (defined $noun ? $noun : $_), '. OK: ', ( ($noun eq $expected{$_}) ? 'Yes' : 'No'), ". \n";
 }
 
 # Success.

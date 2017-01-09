@@ -7,6 +7,14 @@ use Moo;
 
 use Types::Standard qw/HashRef Str/;
 
+has adjective_to_noun =>
+(
+	default  => sub{return {} },
+	is       => 'rw',
+	isa      => HashRef,
+	required => 0,
+);
+
 has irregular2infinitive =>
 (
 	default  => sub{return {} },
@@ -64,6 +72,108 @@ sub BUILD
 {
 	my($self) = @_;
 
+	$self -> adjective_to_noun
+	({
+		British		=> 'Britian',
+		Danish		=> 'Denmark',
+		English		=> 'England',
+		Finnish		=> 'Finland',
+		Irish		=> 'Ireland',
+		Jewish		=> 'Jew',
+		Kurdish		=> 'Kurd',
+		Moorish		=> 'Moor',
+		Polish		=> 'Poland',
+		Scottish	=> 'Scotland',
+		Spanish		=> 'Spain',
+		Swedish		=> 'Sweden',
+		Turkish		=> 'Turkey',
+		amateurish	=> 'amateur',
+		babyish		=> 'baby',
+		bearish		=> 'bear',
+		blackish	=> 'black',
+		bluish		=> 'blue',
+		bookish		=> 'book',
+		boorish		=> 'boor',
+		boyish		=> 'boy',
+		brownish	=> 'brown',
+		brutish		=> 'brute',
+		bullish		=> 'bull',
+		childish	=> 'child',
+		clannish	=> 'clan',
+		cliquish	=> 'clique',
+		clownish	=> 'clown',
+		coltish		=> 'colt',
+		coquettish	=> 'coquette',
+		devilish	=> 'devil',
+		doltish		=> 'dolt',
+		dwarfish	=> 'dwarf',
+		elfish		=> 'elf',
+		faddish		=> 'fad',
+		feverish	=> 'fever',
+		fiendish	=> 'fiend',
+		flourish	=> 'flour',
+		foolish		=> 'fool',
+		foppish		=> 'fop',
+		freakish	=> 'freak',
+		ghoulish	=> 'ghoul',
+		girlish		=> 'girl',
+		gnomish		=> 'gnome',
+		grayish		=> 'gray',
+		greenish	=> 'green',
+		greyish		=> 'grey',
+		hawkish		=> 'hawk',
+		heathenish	=> 'heathen',
+		hellish		=> 'hell',
+		hoggish		=> 'hog',
+		impish		=> 'imp',
+		kittenish	=> 'kitten',
+		knavish		=> 'knave',
+		longish		=> 'long',
+		loutish		=> 'lout',
+		lowish		=> 'low',
+		lumpish		=> 'lump',
+		mannish		=> 'man',
+		modish		=> 'mod',
+		mulish		=> 'mult',
+		nightmarish	=> 'nightmare',
+		oafish		=> 'oaf',
+		owlish		=> 'owl',
+		peevish		=> 'peeve',
+		piggish		=> 'pig',
+		pinkish		=> 'pink',
+		priggish	=> 'prig',
+		prudish		=> 'prude',
+		puckish		=> 'puck',
+		purplish	=> 'purple',
+		rakish		=> 'rake',
+		reddish		=> 'red',
+		roguish		=> 'rogue',
+		roundish	=> 'round',
+		sheepish	=> 'sheep',
+		shortish	=> 'short',
+		slavish		=> 'slave',
+		sluggish	=> 'slug',
+		sluttish	=> 'slut',
+		smallish	=> 'small',
+		snappish	=> 'snappy',
+		snobbish	=> 'snob',
+		sottish		=> 'sot',
+		standoffish	=> 'standoff',
+		stylish		=> 'style',
+		sweetish	=> 'sweet',
+		swinish		=> 'swine',
+		thievish	=> 'thieve',
+		ticklish	=> 'tickle',
+		vixenish	=> 'vixen',
+		voguish		=> 'vugoue',
+		waggish		=> 'wag',
+		waspish		=> 'wasp',
+		whitish		=> 'white',
+		wolfish		=> 'wolf',
+		womanish	=> 'woman',
+		yellowish	=> 'yellow',
+		youngish	=> 'young',
+	});
 	$self -> irregular2infinitive
 	({
 		abided			=> 'abide',
@@ -1108,6 +1218,16 @@ sub BUILD
 
 # -------------------------------------------------------------------
 
+sub adjective2noun
+{
+	my($self, $adjective) = @_;
+
+	return ${$self -> adjective_to_noun}{$adjective} || '';
+
+} # End of adjective2noun.
+
+# -------------------------------------------------------------------
+
 sub stem
 {
 	my($self, $string) = @_;
@@ -1254,6 +1374,17 @@ Lingua::EN::Infinitive - Determine the infinitive form of a conjugated word
 	);
 
 	print "Conjugated: $word. Infinitive: $word1. \n";
+
+	# Now, adjective to noun conversion.
+
+	my($noun);
+
+	for (qw/Turkish amateurish cuttlefish vixenish whitish/)
+	{
+		$noun = $spell -> adjective2noun($_);
+
+		print "$_ => ", (defined $noun ? $noun : $_), ". \n";
+	}
 
 =head1 DESCRIPTION
 
