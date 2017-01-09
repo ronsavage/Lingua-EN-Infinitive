@@ -1353,7 +1353,7 @@ __END__
 
 Lingua::EN::Infinitive - Determine the infinitive form of a conjugated word
 
-=head1 SYNOPSIS
+=head1 Synopsis
 
 	use Lingua::EN::Infinitive;
 
@@ -1414,7 +1414,7 @@ Lingua::EN::Infinitive - Determine the infinitive form of a conjugated word
 
 See scripts/demo.pl and t/test.t for sample code.
 
-=head1 DESCRIPTION
+=head1 Description
 
 =head2 Generic Code
 
@@ -1449,7 +1449,7 @@ it can be used to convert adjectives to nouns.
 
 I suggest calling C<adjective2noun()> if L</stem($word)> does not provide a suitable candidate.
 
-=head1 INSTALLATION
+=head1 Installation
 
 You install C<Lingua::EN::Infinitive>, as you would install any perl module library,
 by running these commands:
@@ -1459,7 +1459,7 @@ by running these commands:
 	make test
 	make install
 
-=head1 WARNING
+=head1 Warning
 
 Do not make the false assumption that
 
@@ -1531,18 +1531,36 @@ Must only be called after calling L</stem($word)>.
 
 Returns the same string as the 2nd value returned by L</stem($word)>.
 
-=head1 REFERENCE
+=head1 Reference
 
 	Title:   Development of a Spelling List
 	Author:  M. Douglas McIlroy
 	Journal: IEEE Transactions on Communications
 	Issue:   Vol COM-30, No 1, January 1982
 
-=head1 AUTHOR
+=head1 Machine-Readable Change Log
+
+The file Changes was converted into Changelog.ini by L<Module::Metadata::Changes>.
+
+=head1 Version Numbers
+
+Version numbers < 1.00 represent development versions. From 1.00 up, they are production versions.
+
+=head1 Repository
+
+L<https://github.com/ronsavage/Lingua-EN-Infinitive>
+
+=head1 Support
+
+Email the author, or log a bug on RT:
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua::EN::Infinitive>.
+
+=head1 Author
 
 C<Lingua::EN::Infinitive> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 1998.
 
-=head1 LICENCE
+=head1 Licence
 
 Australian copyright (c) 1999-2002 Ron Savage.
 
