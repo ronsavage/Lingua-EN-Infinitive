@@ -98,7 +98,7 @@ for (qw/Turkish amateurish cuttlefish demolish radish swish vixenish whitish/)
 {
 	$noun = $spell -> adjective2noun($_);
 
-	print "$_ => ", (defined $noun ? $noun : $_), '. OK: ', ( ($noun eq $expected{$_}) ? 'Yes' : 'No'), ". \n";
+	print "$_ => ", ($noun ? $noun : $_), '. OK: ', ( ($noun eq $expected{$_}) ? 'Yes' : 'No'), ". \n";
 }
 
 # Success.

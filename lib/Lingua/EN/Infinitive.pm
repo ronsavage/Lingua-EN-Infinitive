@@ -1361,16 +1361,19 @@ Lingua::EN::Infinitive - Determine the infinitive form of a conjugated word
 	my($word)  = 'rove';
 
 	# Method 1:
+
 	my($word1, $word2, $suffix, $rule) = $spell -> stem($word);
 
 	# Method 2:
+
 	$spell -> stem($word);
+
 	my($word1, $word2, $suffix, $rule) =
 	(
-		$spell -> {'word1'},  # A possibility.
-		$spell -> {'word2'},  # A possibility, or ''.
-		$spell -> {'suffix'},
-		$spell -> {'rule'},
+		$spell -> word1,  # A possibility.
+		$spell -> word2,  # A possibility, or ''.
+		$spell -> suffix,
+		$spell -> rule,
 	);
 
 	print "Conjugated: $word. Infinitive: $word1. \n";
@@ -1386,23 +1389,65 @@ Lingua::EN::Infinitive - Determine the infinitive form of a conjugated word
 		print "$_ => ", (defined $noun ? $noun : $_), ". \n";
 	}
 
+	# Now, adjective to noun conversion.
+
+	my(%expected) =
+	(
+		Turkish		=> 'Turkey',
+		amateurish	=> 'amateur',
+		cuttlefish	=> '', # I.e. No change because 'cuttlef' can't be an adjective.
+		demolish	=> '', # Ditto.
+		radish		=> '', # Ditto.
+		swish		=> '', # Ditto.
+		vixenish	=> 'vixen',
+		whitish		=> 'white',
+	);
+
+	my($noun);
+
+	for (qw/Turkish amateurish cuttlefish demolish radish swish vixenish whitish/)
+	{
+		$noun = $spell -> adjective2noun($_);
+
+		print "$_ => ", ($noun ? $noun : $_), '. OK: ', ( ($noun eq $expected{$_}) ? 'Yes' : 'No'), ". \n";
+	}
+
+See scripts/demo.pl and t/test.t for sample code.
+
 =head1 DESCRIPTION
 
-Determine the infinitive form of a conjugated word. Also, determine the suffix used to
+=head2 Generic Code
+
+This section discusses the results from calling the method L</stem($word)>.
+
+Determines the infinitive form of a conjugated word. Also, determines the suffix used to
 identify which rule to apply to transform the conjugated word into the infinitive form.
 
 Either 1 or 2 possible infinitives are returned. You must check that the first is really
 an English word. If it is, then it is the result. If it is not valid, then check the second.
 
+This module does not provide a way of determining whether or not a candidate solution is in fact
+an English word.
+
 Failure to deconjugate is indicated by $word1 eq ''.
 
-In general, you can ignore the 3rd and 4th values returned from stem().
+In general, you can ignore the 3rd and 4th values returned from L</stem($word)>.
 
-The algorithm is based on McIlroy's article (see below), after first checking for irregular
+The algorithm is based on the McIlroy article (see below), after first checking for irregular
 words.
 
-In the hash 'suffix2rule', you'll see the key 'order'. This specifies the sort order
-in which to check McIlroy's rules. I've changed his ordering in a number of places.
+In the hash 'suffix2rule', you will see the key 'order'. This specifies the sort order
+in which to check the McIlroy rules. I have changed his ordering in a number of places,
+based on my interpreation of which order produces the better result.
+
+=head2 Adjectival Code
+
+This section discusses the results from calling the method C<adjective2noun()>.
+
+The source contains a list of (adjective => noun) pairs taken from /usr/share/dict/words, and so
+it can be used to convert adjectives to nouns.
+
+I suggest calling C<adjective2noun()> if L</stem($word)> does not provide a suitable candidate.
 
 =head1 INSTALLATION
 
@@ -1414,29 +1459,77 @@ by running these commands:
 	make test
 	make install
 
-If you want to install a private copy of C<Lingua::EN::Infinitive> in your home
-directory, then you should try to produce the initial Makefile with
-something like this command:
-
-	perl Makefile.PL LIB=~/perl
-		or
-	perl Makefile.PL LIB=C:/Perl/Site/Lib
-
-If, like me, you don't have permission to write man pages into unix system
-directories, use:
-
-	make pure_install
-
-instead of make install. This option is secreted in the middle of p 414 of the
-second edition of the dromedary book.
-
 =head1 WARNING
 
-Don't make the false assumption that
+Do not make the false assumption that
 
 	"$word1$suffix" eq $word
 		or
 	"$word2$suffix" eq $word
+
+=head1 Methods
+
+=head2 adjective2noun($adjective)
+
+Returns either the noun which was used to generate the adjective in the first place, or the empty string.
+
+There are 99 (adjective => noun) pairs in the source code.
+
+=head2 rule()
+
+Must only be called after calling L</stem($word)>.
+
+Returns the same string as the 4th value returned by L</stem($word)>.
+
+=head2 stem($word)
+
+Returns a 4-element array:
+
+=over 4
+
+=item o A candidate word, or the empty string
+
+If a non-empty string is returned, check that it is a real word. If it is, then that is the
+candidate you want.
+
+If it is not a real word, or it is empty, check the next word returned.
+
+=item o Another candidate, or the empty string
+
+As before, check that it is a real word.
+
+=item o A suffix, or the empty string
+
+If one of the first two words is real, this is the suffix removed from the input word.
+
+Normally, you would ignore this value.
+
+=item o A rule number, or the empty string.
+
+The arbitrary rule number used to determine the candidate. Rules are applied in the order given by
+these rule numbers.
+
+Normally, you would ignore this value.
+
+=back
+
+=head2 suffix()
+
+Must only be called after calling L</stem($word)>.
+
+Returns the same string as the 3rd value returned by L</stem($word)>.
+
+=head2 word1()
+
+Must only be called after calling L</stem($word)>.
+
+Returns the same string as the 1st value returned by L</stem($word)>.
+
+=head2 word2()
+
+Must only be called after calling L</stem($word)>.
+
+Returns the same string as the 2nd value returned by L</stem($word)>.
 
 =head1 REFERENCE
 
