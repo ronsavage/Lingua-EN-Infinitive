@@ -20,10 +20,11 @@ my(%params) =
 		COMPRESS	=> 'gzip',
 		SUFFIX		=> 'gz'
 	},
-	DISTNAME	=> 'Lingua-EN-Infinitive',
-	NAME		=> 'Lingua::EN::Infinitive',
-	PL_FILES	=> {},
-	PREREQ_PM	=>
+	DISTNAME			=> 'Lingua-EN-Infinitive',
+	MIN_PERL_VERSION	=> 5.006,
+	NAME				=> 'Lingua::EN::Infinitive',
+	PL_FILES			=> {},
+	PREREQ_PM			=>
 	{
 		'Moo'				=> 2.003000,
 		'strict'			=> 0,
@@ -35,8 +36,7 @@ my(%params) =
 		'Test::More'	=> 1.001002,
 		'Test::Pod'		=> 1.48,
 	},
-	VERSION_FROM => 'lib/Lingua/EN/Infinitive.pm',
-        MIN_PERL_VERSION => 5.006,
+	VERSION_FROM => 'lib/Lingua/EN/Infinitive.pm'
 );
 
 if ( ($ExtUtils::MakeMaker::VERSION =~ /^\d\.\d\d$/) && ($ExtUtils::MakeMaker::VERSION > 6.30) )
