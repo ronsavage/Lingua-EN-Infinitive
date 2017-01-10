@@ -1560,7 +1560,7 @@ L<https://rt.cpan.org/Public/Dist/Display.html?Name=Lingua::EN::Infinitive>.
 
 C<Lingua::EN::Infinitive> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 1998.
 
-=head1 Licence
+=head1 LICENSE
 
 Australian copyright (c) 1999-2002 Ron Savage.
 
