@@ -36,6 +36,7 @@ my(%params) =
 		'Test::Pod'		=> 1.48,
 	},
 	VERSION_FROM => 'lib/Lingua/EN/Infinitive.pm',
+        MIN_PERL_VERSION => 5.006,
 );
 
 if ( ($ExtUtils::MakeMaker::VERSION =~ /^\d\.\d\d$/) && ($ExtUtils::MakeMaker::VERSION > 6.30) )
